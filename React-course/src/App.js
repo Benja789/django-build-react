@@ -14,6 +14,9 @@ import Contador from './Components/Contador';
 import ListasYKeys from './Components/ListasYKeys';
 import Logo from './Media/logo.png';
 import FormularioAvanzado from './Components/FormularioAvanzado';
+import axios from 'axios';
+
+const URL = 'http://127.0.0.1:8000/45241/'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -58,10 +61,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 //Funcion a exportar
 function App() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  var persons=[];
+  
+  const getDatos = async()=>{
+    axios.get(URL).then(res=>{
+      persons = res.data
+      console.log(persons)
+    })
+  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -80,6 +92,8 @@ function App() {
           <Tab label="Contador" {...a11yProps(1)} />
           <Tab label="Formulario" {...a11yProps(2)} />
           <Tab label="React Hook Form" {...a11yProps(3)}/>
+          <Tab label="Axios" onClick={getDatos} {...a11yProps(4)}/>
+
         </Tabs>
       </AppBar>
 
@@ -94,6 +108,17 @@ function App() {
       </TabPanel>
       <TabPanel value={value} index={3}>
         <FormularioAvanzado/>
+      </TabPanel>     
+      <TabPanel value={value} index={4}  >
+        <Typography variant="h3" >Datos de la base de datos</Typography>
+        {
+            //Recorre el arrays y se lo asigna a items, para luego imprimirlo
+            //El index es la posicion que tomara cada elemento  
+            persons.map((informacion, index) => {
+                return <p key ={informacion.id}>Nombre: {informacion.frist_name}  |  Apellido: {informacion.last_name} </p>
+                
+            })
+        }
       </TabPanel>      
     </div>
   );
