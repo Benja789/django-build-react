@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {
   AppBar,
@@ -15,6 +15,7 @@ import ListasYKeys from './Components/ListasYKeys';
 import Logo from './Media/logo.png';
 import FormularioAvanzado from './Components/FormularioAvanzado';
 import axios from 'axios';
+import Tarjeta from './Components/Tarjeta';
 
 const URL = 'http://127.0.0.1:8000/45241/'
 
@@ -66,12 +67,13 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  var persons=[];
+  const [listaPersona, setPersonas] = useState([])
   
   const getDatos = async()=>{
     axios.get(URL).then(res=>{
-      persons = res.data
-      console.log(persons)
+      const persons = res.data
+      setPersonas([persons])
+      console.log(listaPersona)
     })
   }
 
@@ -112,12 +114,13 @@ function App() {
       <TabPanel value={value} index={4}  >
         <Typography variant="h3" >Datos de la base de datos</Typography>
         {
-            //Recorre el arrays y se lo asigna a items, para luego imprimirlo
-            //El index es la posicion que tomara cada elemento  
-            persons.map((informacion, index) => {
-                return <p key ={informacion.id}>Nombre: {informacion.frist_name}  |  Apellido: {informacion.last_name} </p>
-                
-            })
+            listaPersona.map((per) => (
+                <div id={per.key} align="center" >
+                    <Tarjeta persona = {per}/>
+                    <p/>
+                </div>
+            )
+            )
         }
       </TabPanel>      
     </div>
