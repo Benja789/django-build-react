@@ -125,7 +125,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
+CSRF_COOKIE_SECURE = True
 STATIC_URL = '/static/'
 CORS_ALLOW_ALL_ORIGINS=True
 STATICFILES_DIRS= [os.path.join(BASE_DIR, 'React-course/build/static')]

@@ -8,7 +8,7 @@ import {
     Button,
     CardActions
 } from '@material-ui/core';
-
+import axios from 'axios';
 //Codigo CSS
 const useStyles = makeStyles((theme)=>({
     root: {
@@ -48,11 +48,23 @@ const Formulario = () => {
         })
         //console.log(persona)
     };
-
-    const enviarDatos =(event)=>{
+    const sendDatos = async() =>{
+        axios({
+            method :'POST',
+            url:'http://127.0.0.1:8000/add25/',
+            headers:{
+                "Content-Type": "application/json",
+            },
+            data:{
+                frist_name : this.state.persona.nombre,
+                last_name: this.state.persona.apellido,
+            },
+        })
+    }
+        
+    const enviarDatos =async(event)=>{
         //Siempre se tiene que iniciar con este metodo 
-        event.preventDefault();
-        console.log(persona);
+        sendDatos()
     };
 
     return ( 
