@@ -44,13 +44,14 @@ const Formulario = () => {
 
   const createObject = (event) => {
     //Como es objeto se trata de esta manera
+    event.preventDefault();
     setPersona({
       ...persona,
       [event.target.name]: event.target.value,
     });
     //console.log(persona)
   };
-  const sendDatos = async () => {
+  const sendDatos = async (event) => {
     let formData = new FormData();
     formData.append("nombre", persona.nombre);
     formData.append("apellido", persona.apellido);
@@ -66,8 +67,10 @@ const Formulario = () => {
 
   const enviarDatos = async (event) => {
     //Siempre se tiene que iniciar con este metodo
+    event.preventDefault();
     sendDatos();
-    return false;
+    alert("Dato almacenado")
+    //return false;
   };
 
   return (

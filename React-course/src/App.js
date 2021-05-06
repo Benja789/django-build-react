@@ -80,8 +80,9 @@ function App() {
   };
 
   const handleChange = (event, newValue) => {
+    event.preventDefault();
     setValue(newValue);
-  };
+    };
 
   return (
     <div className={classes.root}>
@@ -89,7 +90,7 @@ function App() {
         <Toolbar className={classes.toolbar}>
           <img src={Logo} alt="Logo React" height="50" width="50" />
           <h1 className={classes.h1} align="center">
-            Pagina Creada en REACT
+            Pagina de inicio
           </h1>
         </Toolbar>
 
