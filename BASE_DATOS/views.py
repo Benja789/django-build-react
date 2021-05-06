@@ -13,9 +13,9 @@ def conexion_react(request):
 
 @csrf_exempt
 def add(request):
-    #nombre = request.POST['nombre']
-    #apellido =request.POST['apellido']
-    #personaNueva = Persona(frist_name=nombre, last_name =apellido)
-    #personaNueva.save()
+    nombre = request.POST['nombre']
+    apellido =request.POST['apellido']
+    personaNueva = Persona(frist_name=nombre, last_name =apellido)
+    personaNueva.save()
     print(request)
-    return HttpResponse("user", safe=False) 
+    return HttpResponse("user") 
