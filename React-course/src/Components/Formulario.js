@@ -9,6 +9,9 @@ import {
   CardActions,
 } from "@material-ui/core";
 import axios from "axios";
+
+const base_URL = "http://127.0.0.1:8000/";
+
 //Codigo CSS
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,13 +54,13 @@ const Formulario = () => {
     });
     //console.log(persona)
   };
-  const sendDatos = async (event) => {
+  const sendDatos = async () => {
     let formData = new FormData();
     formData.append("nombre", persona.nombre);
     formData.append("apellido", persona.apellido);
     axios({
       method: "POST",
-      url: "http://127.0.0.1:8000/add25/",
+      url: base_URL+"add25/",
       headers: {
         "Content-Type": "multipart/form-data",
       },

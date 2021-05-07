@@ -17,7 +17,8 @@ import FormularioAvanzado from "./Components/FormularioAvanzado";
 import axios from "axios";
 import Tarjeta from "./Components/Tarjeta";
 
-const URL = "http://127.0.0.1:8000/45241/";
+const base_URL = "http://127.0.0.1:8000/";
+//const URL = "http://127.0.0.1:8000/45241/";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -71,7 +72,7 @@ function App() {
   const [listaPersona, setPersonas] = useState([]);
 
   const getDatos = async () => {
-    axios.get(URL).then((res) => {
+    axios.get(base_URL+"45241/").then((res) => {
       const persons = res.data;
       console.log(persons);
       setPersonas(persons);
