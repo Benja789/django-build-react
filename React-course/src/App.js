@@ -16,6 +16,7 @@ import Logo from "./Media/logo.png";
 import FormularioAvanzado from "./Components/FormularioAvanzado";
 import axios from "axios";
 import Tarjeta from "./Components/Tarjeta";
+import Socket from "./Components/Socket";
 
 const base_URL = "http://127.0.0.1:8000/";
 //const URL = "http://127.0.0.1:8000/45241/";
@@ -105,6 +106,7 @@ function App() {
           <Tab label="Formulario" {...a11yProps(2)} />
           <Tab label="React Hook Form" {...a11yProps(3)} />
           <Tab label="Axios" onClick={getDatos} {...a11yProps(4)} />
+          <Tab label="Socket" {...a11yProps(5)} />
         </Tabs>
       </AppBar>
 
@@ -128,6 +130,9 @@ function App() {
             <p />
           </div>
         ))}
+      </TabPanel>
+      <TabPanel value={value} index={5}>
+        <Socket />
       </TabPanel>
     </div>
   );

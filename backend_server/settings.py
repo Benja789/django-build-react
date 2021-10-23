@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'BASE_DATOS',
+    #Primero importar los canales
+    'channels'
 ]
 
 MIDDLEWARE = [
@@ -77,6 +79,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'backend_server.wsgi.application'
+#Declaramos esta nueva variable
+ASGI_APPLICATION = 'backend_server.asgi.application'
 
 
 # Database

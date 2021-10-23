@@ -19,3 +19,7 @@ def add(request):
     personaNueva.save()
     print(request)
     return HttpResponse("user") 
+
+
+def socket (request):
+    pass

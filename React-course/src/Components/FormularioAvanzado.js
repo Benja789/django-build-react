@@ -15,7 +15,7 @@ const FormularioAvanzado = () => {
 
     const guardarInfo = (data, e) =>{
         console.log(data)
-        setEntradas([...entradas, ...data]);
+        setEntradas({data});
         //console.log(entradas)
     }
 
